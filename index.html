@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+      google.charts.load('current', {packages: ['corechart']});
+      google.charts.setOnLoadCallback(initialize);
+
+      function initialize() {
+	  var opts = {sendMethod: 'auto'};
+	  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1h9g-5BWL0KJlF-h3wq7aCKm2LB1MXDZQZhJn3E2r2P0/edit?usp=sharing', opts);
+
+	  query.setQuery('select A');
+	  query.send(drawVisualization);
+      } 
+
+      function drawVisualization(response) {
+
+	  var data = google.visualization.arrayToDataTable([
+              ['Response', 'Count', { role: 'style' }],
+              ['Very likely', 36, 'red'],  
+              ['Somewhat likely', 26, 'green'],
+              ['Maybe', 16, 'blue'],
+	      ['Somewhat unlikely', 7, 'yellow'],
+              ['Very unlikely', 0, 'purple']
+	  ]);
+          var chart = new google.visualization.ColumnChart(document.getElementById('vis_div'));
+
+          options = {
+	          'title': "How likely are you to repeat this journey on your own, and/or attempt others that are similar?",
+                  'legend': 'none'};
+	      
+	  chart.draw(data, options);
+
+      }
+    </script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-9 col-md-7 main">
+
+	    <img class="logo" src="http://static1.squarespace.com/static/5645dea9e4b0639705d8b2dd/t/5718c0931d07c00488829652/1478190097743/?format=1500w"></img>
+
+            <h1 class="page-header">Decision makers hit the road</h1>
+
+            <section data-place="rides">
+	      <p>If a picture is worth a thousand words, an hour on a
+	      bike must be worth a thousand hours of planning,
+	      meetings, charettes, and reports! At least, that is the
+	      thought behind the new Professional Development Ride
+	      program introduced
+	      by <a href="http://www.yaybikes.com">YayBikes!</a> in
+	      2016 in partnership with
+	      the <a href="http://www.dot.state.oh.us/pages/home.aspx">Ohio
+	      Department of Transportation</a>. The concept is
+	      simple. If local decision makers have the opportunity to
+	      experience their community first hand as a cyclist,
+	      they'll better understand the transportation needs of
+	      their constituents and how best to serve them.</p>
+
+	      <img class="sidebar-content" src="https://static1.squarespace.com/static/5645dea9e4b0639705d8b2dd/t/576ae69df7e0ab9ac46e3a30/1466623649423/?format=750w"></img>
+
+	      <p>Our professional development rides are designed to
+	      provide opportunities to experience a community's
+	      current street infrastructure by bike to better
+	      understand how to:</p>
+	      <ol>
+		<li>Engineer and evaluate bicycle-related infrastructure</li>
+		<li>Inform and educate all road users</li>
+                <li>Enforce laws governing behaviors that lead to conflicts between people on bikes and other road users</li>
+		<li>Encourage active transportation</li>
+	      </ol>
+
+	      <p>Previous participants have reported increased
+	      understanding of why cyclists make the choices they do
+	      and understanding what makes for an effective bicycle
+	      accommodation. In their own words:</p>
+
+	      <p class="quote">"I learned there is a huge difference
+	      between a well designed bike lane or facility and one
+	      that is just thrown in last minute to a project to make
+	      it a complete street."</p>
+
+	      <p class="quote">"I got a feel for the perspective of a
+	      bicycle rider. I also learned some things about general
+	      bicycling practices that are contrary to what I’d
+	      previously thought (lane positioning, platooning at
+	      traffic signals, etc.). These are things that will aid
+	      me as I’m working on different issues pertaining to
+	      bicycling."</p>
+
+	      <p class="quote">"I learned quite a bit about what looks
+	      good on paper may not be the right solution in real
+	      life."</p>
+
+	      <p class="quote">"If I want to expand my engineering judgment, I need
+	      to experience it. And it was a lot different than I
+	      thought. Yay Bikes! gave our team a whole new
+	      perspective. As engineers, we’re focused on making it
+	      work, but Yay Bikes! gave us feedback from a customer
+	      perspective."</p>
+
+	      <p>Professional development rides are 3 hour experiences
+	      customized for each community to feature as many types
+	      of infrastructure as possible within approximately 8–10
+	      miles. They roll at a casual pace accessible to most,
+	      and include several stops to discuss the experience of
+	      riding different streets, as well as traffic law and how
+	      it pertains to best bicycling practices. Ride leaders
+	      are extensively trained transportation cyclists and
+	      educators with deep respect for participants'
+	      professional expertise.</p>
+            </section>
+
+            <section data-place="rides"> 
+	      <h2>2016 year in review</h2>
+              <p>Although our first professional development ride did
+		not take place until mid-August, we made up for lost
+		time and led 18 rides in the remainder of the year.  The
+		111 participants who participated in the rides
+		represented a wide variety of professions including
+		engineers, planners, mayors, city managers, police
+		chiefs, and stakeholders in the parks, health, and
+		business development communities. </p>
+
+               <div class="vis" id="vis_div"></div>
+	    </section>
+
+            <section  data-place="odot8">
+                <h2>ODOT Region 8 (Hamilton County)</h2>
+		<h3>October 31, 2016</h3>
+		<img class="sidebar-content" src="https://lh3.googleusercontent.com/s5hvf5nA_Fs3rlRzNuFPbs4ikG8W94FlC_wwPysiznWPwF6gLHZ4hrqZirBNEa79v_-jt8tcnfdTyJQFMnNj2vBqkxnUVPY9mb2iKTBTUgGexJW6pLRKYcm1-2nlMXrNIEUk3xLqwRKYiK8VJO-ZTvsDHbNrc_G5SvovcPQ13NcynJVZjtW5kxaR4Y4UQ1o17xtb3gLLtvBkjC_BaANluOLymtQ88077ztJiLoMe_yFAKrfbLIxT95vDAMkQzkGVRDexZQdKOG7H3Wjbi2p6ax-iusMDRdpitzF-E9Ja0l6KMn-hDFqhopfzdcOczLTAgXV5_qah97eZmwIw5GbgR-f8M0dYgeUiXbGNaoTGVjBMav7mkbaEGN91Qf9xVRUCq1Nv7m9h7UmLi0ijfyfMaJIpUAxv9IIz7cDxRZe0zqb96oB-B7MPv5eSGrhT2imbS8TrXpoCyNmht23vBUF7JC__cCdZd5i12IxgxHDpma1HZXgyOS_6XAN2PUNyg_5Qu0Ya48Uov_NkMFs5JnaSYcna4J_4UmRgSvvKQ2QH8Z-u3GbeUGbdoNkzOjAKSVgtcvZV40XwRrr-kZ9iMyXuoOhNfXEDLw=w1366-h653"></img>
+                <p>The thought of riding on Halloween was not enough
+                to spook the participants of the ODOT Region 8 ride,
+                who enjoyed a mild and sunny autumn ride through a
+                series of small towns in Hamilton County east of
+                Cincinnati.  The group included representatives from
+                the ODOT, City of Cinncinati, Great Parks of Hamilton
+                County, and Green Umbrella.  The highlight of the ride
+                from the YayBikes! perspective was hearing the
+                participants bounce ideas off of each other and
+                brainstorm solutions to tricky cycle-route
+                connectivity problems in real time! </p>
+            </section>
+
+             <section  data-place="zanesville">
+                <h2>Zanesville</h2>
+		<h3>August 12, 2016</h3>
+		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
+                <p>The thought of riding on Halloween was not enough
+                to spook the participants of the ODOT Region 8 ride,
+                who enjoyed a mild and sunny autumn ride through a
+                series of small towns in Hamilton County east of
+                Cincinnati.  The group included representatives from
+                the ODOT, City of Cinncinati, Great Parks of Hamilton
+                County, and Green Umbrella.  The highlight of the ride
+                from the YayBikes! perspective was hearing the
+                participants bounce ideas off of each other and
+                brainstorm solutions to tricky cycle-route
+                connectivity problems in real time! </p>
+            </section>
+
+            <section  data-place="worthington">
+                <h2>Worthington</h2>
+		<h3>August 23, 2016</h3>
+		<img class="sidebar-content" src="https://static1.squarespace.com/static/5645dea9e4b0639705d8b2dd/t/57d1b6c0414fb564bfa1f915/1473361605902/?format=750w"></img>
+                <p>The thought of riding on Halloween was not enough
+                to spook the participants of the ODOT Region 8 ride,
+                who enjoyed a mild and sunny autumn ride through a
+                series of small towns in Hamilton County east of
+                Cincinnati.  The group included representatives from
+                the ODOT, City of Cinncinati, Great Parks of Hamilton
+                County, and Green Umbrella.  The highlight of the ride
+                from the YayBikes! perspective was hearing the
+                participants bounce ideas off of each other and
+                brainstorm solutions to tricky cycle-route
+                connectivity problems in real time! </p>
+            </section>
+
+            <section  data-place="troy">
+                <h2>Troy</h2>
+		<h3>September 8, 2016</h3>
+		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
+                <p>The thought of riding on Halloween was not enough
+                to spook the participants of the ODOT Region 8 ride,
+                who enjoyed a mild and sunny autumn ride through a
+                series of small towns in Hamilton County east of
+                Cincinnati.  The group included representatives from
+                the ODOT, City of Cinncinati, Great Parks of Hamilton
+                County, and Green Umbrella.  The highlight of the ride
+                from the YayBikes! perspective was hearing the
+                participants bounce ideas off of each other and
+                brainstorm solutions to tricky cycle-route
+                connectivity problems in real time! </p>
+            </section>
+
+            <section  data-place="powell">
+                <h2>Powell</h2>
+		<h3>September 12, 2016</h3>
+		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
+                <p>The thought of riding on Halloween was not enough
+                to spook the participants of the ODOT Region 8 ride,
+                who enjoyed a mild and sunny autumn ride through a
+                series of small towns in Hamilton County east of
+                Cincinnati.  The group included representatives from
+                the ODOT, City of Cinncinati, Great Parks of Hamilton
+                County, and Green Umbrella.  The highlight of the ride
+                from the YayBikes! perspective was hearing the
+                participants bounce ideas off of each other and
+                brainstorm solutions to tricky cycle-route
+                connectivity problems in real time! </p>
+            </section>
+
+            <section  data-place="miamisburg">
+                <h2>Miamisburg</h2>
+		<h3>September 16, 2016</h3>
+		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
+                <p>The thought of riding on Halloween was not enough
+                to spook the participants of the ODOT Region 8 ride,
+                who enjoyed a mild and sunny autumn ride through a
+                series of small towns in Hamilton County east of
+                Cincinnati.  The group included representatives from
+                the ODOT, City of Cinncinati, Great Parks of Hamilton
+                County, and Green Umbrella.  The highlight of the ride
+                from the YayBikes! perspective was hearing the
+                participants bounce ideas off of each other and
+                brainstorm solutions to tricky cycle-route
+                connectivity problems in real time! </p>
+            </section>
+
+            <section  data-place="richland">
+                <h2>Richland</h2>
+		<h3>September 19, 2016</h3>
+		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
+                <p>The thought of riding on Halloween was not enough
+                to spook the participants of the ODOT Region 8 ride,
+                who enjoyed a mild and sunny autumn ride through a
+                series of small towns in Hamilton County east of
+                Cincinnati.  The group included representatives from
+                the ODOT, City of Cinncinati, Great Parks of Hamilton
+                County, and Green Umbrella.  The highlight of the ride
+                from the YayBikes! perspective was hearing the
+                participants bounce ideas off of each other and
+                brainstorm solutions to tricky cycle-route
+                connectivity problems in real time! </p>
+            </section>
+
+            <section  data-place="fremont">
+                <h2>Fremont</h2>
+		<h3>September 22, 2016</h3>
+		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
+                <p>The thought of riding on Halloween was not enough
+                to spook the participants of the ODOT Region 8 ride,
+                who enjoyed a mild and sunny autumn ride through a
+                series of small towns in Hamilton County east of
+                Cincinnati.  The group included representatives from
+                the ODOT, City of Cinncinati, Great Parks of Hamilton
+                County, and Green Umbrella.  The highlight of the ride
+                from the YayBikes! perspective was hearing the
+                participants bounce ideas off of each other and
+                brainstorm solutions to tricky cycle-route
+                connectivity problems in real time! </p>
+            </section>
+        </div>
+
+        <div id="map" class="col-sm-3 col-md-5 sidebar">
+
+        </div>
+
+    </div>
+</div>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="storymap.js"></script>
+<script src="data/20161031_pdr_odot8_route_lines.js"></script>
+<script src="data/20161031_pdr_odot8_route_points.js"></script>
+<script src="data/2016_rides.js"></script>
+<script type="text/javascript">
+    (function () {
+        'use strict';
+
+        // additional layers
+        var layers = {
+	  'rides' : L.geoJson(rides, {
+              onEachFeature: pop_rides }),
+          'odot8_points' : L.geoJson(odot8_points),
+          'odot8_lines' : L.geoJson(odot8_lines)
+        };
+
+        function pop_rides(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2"><strong>DESCRIPTION</strong><br />' + feature.properties['DESCRIPTIO']  + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        var markers = {
+	    rides: {lat: 39.9622601, lon: -83.0007064, 
+		    zoom: 7, layer:layers['rides']},
+            odot8: {lat: 39.131874353016123, lon: -84.385620432948912,
+                    zoom: 13, layer:layers['odot8_lines']},
+            zanesville: {lon: -82.0131923, lat: 39.9403453,
+                    zoom: 13},
+            worthington: {lon: -83.0179619, lat: 40.0931191,
+                    zoom: 13},
+            troy: {lon: -84.2032766, lat: 40.0394982, 
+                    zoom: 13},
+            powell: {lon: -83.0751868, lat: 40.1578403,
+                    zoom: 13},
+            miamisburg:{lon: -84.2866082, lat: 39.6428362,
+                    zoom: 13},
+            richland: {lon: -82.515447, lat: 40.75839,
+                    zoom: 13},
+            fremont: {lon: -83.1218633, lat: 41.3503303,
+                    zoom: 13}
+        };
+
+        $('.main').storymap({markers: markers});
+    }());
+</script>
+</body>
+</html>
