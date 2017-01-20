@@ -13,8 +13,10 @@
 
                 // add an OpenStreetMap tile layer
                 L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>,&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
-                }).addTo(map);
+                    attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>,&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+		    edgeBufferTiles: 1
+
+		}).addTo(map);
 
                 return map;
             }
@@ -24,7 +26,7 @@
 
 
         if (typeof(L) === 'undefined') {
-            throw new Error('Storymap requires Laeaflet');
+            throw new Error('Storymap requires Leaflet');
         }
         if (typeof(_) === 'undefined') {
             throw new Error('Storymap requires underscore.js');
@@ -111,16 +113,20 @@
                 fg.clearLayers();
                 if (key === 'overview') {
                     map.setView(initPoint, initZoom, true);
+		} else if (key === 'rides') {
+                    var marker = markers[key];
+                    var layer = marker.layer;
+                    fg.addLayer(layer);
                 } else if (markers[key]) {
                     var marker = markers[key];
                     var layer = marker.layer;
                     if(typeof layer !== 'undefined'){
                       fg.addLayer(layer);
                     };
-                    fg.addLayer(L.marker([marker.lat, marker.lon]));
+//                    fg.addLayer(L.marker([marker.lat, marker.lon]));
 
-//                    map.setView([marker.lat, marker.lon], marker.zoom, 1);
-		    map.flyTo([marker.lat, marker.lon], marker.zoom);
+                    map.setView([marker.lat, marker.lon], marker.zoom, 1);
+//		    map.flyTo([marker.lat, marker.lon], marker.zoom, { duration : 2 });
                 }
 
             }

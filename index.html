@@ -5,272 +5,300 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
     <link type="text/css" rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">    
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-    <script type="text/javascript">
-      google.charts.load('current', {packages: ['corechart']});
-      google.charts.setOnLoadCallback(initialize);
-
-      function initialize() {
-	  var opts = {sendMethod: 'auto'};
-	  var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1h9g-5BWL0KJlF-h3wq7aCKm2LB1MXDZQZhJn3E2r2P0/edit?usp=sharing', opts);
-
-	  query.setQuery('select A');
-	  query.send(drawVisualization);
-      } 
-
-      function drawVisualization(response) {
-
-	  var data = google.visualization.arrayToDataTable([
-              ['Response', 'Count', { role: 'style' }],
-              ['Very likely', 36, 'red'],  
-              ['Somewhat likely', 26, 'green'],
-              ['Maybe', 16, 'blue'],
-	      ['Somewhat unlikely', 7, 'yellow'],
-              ['Very unlikely', 0, 'purple']
-	  ]);
-          var chart = new google.visualization.ColumnChart(document.getElementById('vis_div'));
-
-          options = {
-	          'title': "How likely are you to repeat this journey on your own, and/or attempt others that are similar?",
-                  'legend': 'none'};
-	      
-	  chart.draw(data, options);
-
-      }
-    </script>
-
 </head>
 <body>
 
-<div class="container-fluid">
+  <div class="container-fluid">
     <div class="row">
 
-        <div class="col-sm-9 col-md-7 main">
-
-	    <img class="logo" src="https://static1.squarespace.com/static/5645dea9e4b0639705d8b2dd/t/5718c0931d07c00488829652/1478190097743/?format=1500w"></img>
-
-            <h1 class="page-header">Decision makers hit the road</h1>
-
-            <section data-place="rides">
-	      <p>If a picture is worth a thousand words, an hour on a
-	      bike must be worth a thousand hours of planning,
-	      meetings, charettes, and reports! At least, that is the
-	      thought behind the new Professional Development Ride
-	      program introduced
-	      by <a href="https://www.yaybikes.com">YayBikes!</a> in
-	      2016 in partnership with
-	      the <a href="https://www.dot.state.oh.us/pages/home.aspx">Ohio
+      <div class="col-sm-9 col-md-7 main">
+	<div id="titleblock">
+	  <a href="http://www.yaybikes.com"><img id="logo" src="https://static1.squarespace.com/static/5645dea9e4b0639705d8b2dd/t/5718c0931d07c00488829652/1478190097743/?format=1500w"></img></a>
+          <h1 class="page-header">2016 Professional Development Rides</h1>
+	</div>
+        <section data-place="rides">
+	  <p>If a picture is worth a thousand words, an hour on a
+	    bike must be worth a thousand hours of planning,
+	    meetings, charettes, and reports! At least, that is the
+	    thought behind the new Professional Development Ride
+	    program introduced
+	    by <a href="https://www.yaybikes.com">YayBikes!</a> in
+	    2016 in partnership with
+	    the <a href="https://www.dot.state.oh.us/pages/home.aspx">Ohio
 	      Department of Transportation</a>. The concept is
-	      simple. If local decision makers have the opportunity to
-	      experience their community first hand as a cyclist,
-	      they'll better understand the transportation needs of
-	      their constituents and how best to serve them.</p>
+	    simple. If local decision makers have the opportunity to
+	    experience their community first hand as a cyclist,
+	    they'll better understand the transportation needs of
+	    their constituents and how best to serve them.</p>
+	  
+	  <img class="ride-image" src="https://static1.squarespace.com/static/5645dea9e4b0639705d8b2dd/t/576ae69df7e0ab9ac46e3a30/1466623649423/?format=750w"></img>
 
-	      <img class="sidebar-content" src="https://static1.squarespace.com/static/5645dea9e4b0639705d8b2dd/t/576ae69df7e0ab9ac46e3a30/1466623649423/?format=750w"></img>
+	  <p>Our professional development rides are designed to
+	    provide opportunities to experience a community's
+	    current street infrastructure by bike to better
+	    understand how to:</p>
+	  <ol>
+	    <li>Engineer and evaluate bicycle-related infrastructure</li>
+	    <li>Inform and educate all road users</li>
+            <li>Enforce laws governing behaviors that lead to conflicts between people on bikes and other road users</li>
+	    <li>Encourage active transportation</li>
+	  </ol>
 
-	      <p>Our professional development rides are designed to
-	      provide opportunities to experience a community's
-	      current street infrastructure by bike to better
-	      understand how to:</p>
-	      <ol>
-		<li>Engineer and evaluate bicycle-related infrastructure</li>
-		<li>Inform and educate all road users</li>
-                <li>Enforce laws governing behaviors that lead to conflicts between people on bikes and other road users</li>
-		<li>Encourage active transportation</li>
-	      </ol>
+	  <p>Previous participants have reported increased
+	    understanding of why cyclists make the choices they do
+	    and understanding what makes for an effective bicycle
+	    accommodation. In their own words:</p>
+	  
+	  <p class="quote">"I learned there is a huge difference
+	    between a well designed bike lane or facility and one
+	    that is just thrown in last minute to a project to make
+	    it a complete street."</p>
 
-	      <p>Previous participants have reported increased
-	      understanding of why cyclists make the choices they do
-	      and understanding what makes for an effective bicycle
-	      accommodation. In their own words:</p>
+	  <p class="quote">"I got a feel for the perspective of a
+	    bicycle rider. I also learned some things about general
+	    bicycling practices that are contrary to what I'd
+	    previously thought (lane positioning, platooning at
+	    traffic signals, etc.). These are things that will aid me
+	    as I'm working on different issues pertaining to
+	    bicycling."</p>
+	  
+	  <p class="quote">"I learned quite a bit about what looks
+	    good on paper may not be the right solution in real
+	    life."</p>
 
-	      <p class="quote">"I learned there is a huge difference
-	      between a well designed bike lane or facility and one
-	      that is just thrown in last minute to a project to make
-	      it a complete street."</p>
+	  <p class="quote">"If I want to expand my engineering judgment, I need
+	    to experience it. And it was a lot different than I
+	    thought. Yay Bikes! gave our team a whole new
+	    perspective. As engineers, we're focused on making it
+	    work, but Yay Bikes! gave us feedback from a customer
+	    perspective."</p>
 
-	      <p class="quote">"I got a feel for the perspective of a
-	      bicycle rider. I also learned some things about general
-	      bicycling practices that are contrary to what I’d
-	      previously thought (lane positioning, platooning at
-	      traffic signals, etc.). These are things that will aid
-	      me as I’m working on different issues pertaining to
-	      bicycling."</p>
+	  <p>Professional development rides are 3 hour experiences
+	    customized for each community to feature as many types
+	    of infrastructure as possible within approximately 8-10
+	    miles. They roll at a casual pace accessible to most,
+	    and include several stops to discuss the experience of
+	    riding different streets, as well as traffic law and how
+	    it pertains to best bicycling practices. Ride leaders
+	    are extensively trained transportation cyclists and
+	    educators with deep respect for participants'
+	    professional expertise.</p>
+        </section>
 
-	      <p class="quote">"I learned quite a bit about what looks
-	      good on paper may not be the right solution in real
-	      life."</p>
+        <section data-place="rides"> 
+	  <h2>2016 year in review</h2>
+          <p>Although our first professional development ride did
+	    not take place until mid-August, we made up for lost
+	    time and led 18 rides in the remainder of the year.  The
+	    111 participants who participated in the rides
+	    represented a wide variety of professions including
+	    engineers, planners, mayors, city managers, police
+	    chiefs, and stakeholders in the parks, health, and
+	    business development communities. </p>
 
-	      <p class="quote">"If I want to expand my engineering judgment, I need
-	      to experience it. And it was a lot different than I
-	      thought. Yay Bikes! gave our team a whole new
-	      perspective. As engineers, we’re focused on making it
-	      work, but Yay Bikes! gave us feedback from a customer
-	      perspective."</p>
+          <div class="vis" id="vis_div"></div>
+	</section>
+<section  data-place="ohio_zanesville_20160812"><h2>Zanesville, Ohio</h2><h3>August 12, 2016</h3><p>Fantastic Professional Development Ride with Danny Louwers with the City of Zanesville, Ann Boyd Hollingsworth with the Zanesville-Muskingum County Health Department, Ken Shonkwiler with Ohio Mideastern Government Association, and Andrea Fowler Irland with the National Park Service.
+</p><img class="ride-image" src="https://scontent-ort2-1.xx.fbcdn.net/v/t1.0-9/13892163_10154518811178933_7967170872040330434_n.jpg?oh=d689d4e12dab38862942050ee6d7fa23&oe=58B2ACA7"></img><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Andrea Irland</td><td></td><td>National Park Service</td></tr>
+<tr><td>Ken Shonkwiler</td><td></td><td>Ohio Mideastern Goverment Association</td></tr>
+<tr><td>Ann Hollingsworth</td><td></td><td>Zanesville-Muskingum County Health Dept</td></tr>
+<tr><td>Daniel Louwers</td><td></td><td>City of Zanesville</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_worthington_20160823"><h2>Worthington, Ohio</h2><h3>August 23, 2016</h3><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Dan Whited</td><td>Service & Engineering</td><td>City of Worthington</td></tr>
+<tr><td>Steve Tennant</td><td></td><td>City of Worthington</td></tr>
+<tr><td>Robert Wetmore</td><td></td><td>City of Worthington</td></tr>
+<tr><td>Celia Thornton</td><td>Community Center</td><td>City of Worthington</td></tr>
+<tr><td>Darren Hurley</td><td>Parks & Recreation</td><td>City of Worthington</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_troy_20160908"><h2>Troy, Ohio</h2><h3>September 8, 2016</h3><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Christy Butera</td><td></td><td>City of Troy</td></tr>
+<tr><td>Tim Davis</td><td></td><td>City of Troy</td></tr>
+<tr><td>Doug Tremblay</td><td></td><td>City of Troy</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_powell_20160912"><h2>Powell, Ohio</h2><h3>September 12, 2016</h3><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Art Siegesmund</td><td></td><td></td></tr>
+<tr><td>Christopher Huber</td><td></td><td></td></tr>
+<tr><td>Michael Landon</td><td></td><td></td></tr>
+<tr><td>Les Wibberley</td><td></td><td></td></tr>
+<tr><td>Keegan Hale</td><td></td><td></td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_miamisburg_20160916"><h2>Miamisburg, Ohio</h2><h3>September 16, 2016</h3><p>Fantastic ride with a great group of professionals in Miamisburg today. Yay Bikes!
+</p><img class="ride-image" src="https://scontent.fcmh1-1.fna.fbcdn.net/v/t1.0-9/14333632_1272891926054908_3259846055126222205_n.jpg?oh=d51d8780fca3c776b14b8360ec3c6c05&oe=590E446E"></img><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Chris Fine</td><td>Director of Development</td><td>City of Miamisburg</td></tr>
+<tr><td>Bob Stanley</td><td>City Engineer</td><td>City of Miamisburg</td></tr>
+<tr><td>Ryan Homsi</td><td>City Planner</td><td>City of Miamisburg</td></tr>
+<tr><td>Vanessa Glotfelter</td><td>Engineering Consultant</td><td></td></tr>
+<tr><td>Kelsey Whipp</td><td></td><td>City of Miamisburg</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_mansfield_20160919"><h2>Richland County, Ohio</h2><h3>September 19, 2016</h3><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Todd Blankenship</td><td>Regional Planner</td><td>Richland County Regional Planning Commission</td></tr>
+<tr><td>Robert Bianchi</td><td>City Engineer</td><td>City of Mansfield</td></tr>
+<tr><td>Kelsey Keller</td><td>Engineering Consultant</td><td>K.E. McCartney & Associates, Inc.</td></tr>
+<tr><td>Adam Gove</td><td>Chief Deputy Engineer</td><td>Richland County Engineer</td></tr>
+<tr><td>Keith Amstutz</td><td>Engineering Consultant</td><td>
+Shaffer, Johnston, Lichtenwalter & Associates, Inc.</td></tr>
+<tr><td>Maura Teynor</td><td>Chief Advancement Officer</td><td>Richland County Foundation</td></tr>
+<tr><td>Joe Gies</td><td>Public Works</td><td>City of Shelby</td></tr>
+<tr><td>Carla Colon</td><td>Transportation Planner</td><td>Richland County Regional Planning Commission</td></tr>
+<tr><td>Nathan Long</td><td>Engineer</td><td>City of Mansfield</td></tr>
+<tr><td>Jeremy Lay</td><td>Engineering Consultant</td><td>Richland Engineering Limited</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_fremont_20160922"><h2>Fremont, Ohio</h2><h3>September 22, 2016</h3><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Elizabeth Royster</td><td>Civil Engineer</td><td>Sandusky County Engineers</td></tr>
+<tr><td>Julie Thomas</td><td>Engineering Consultant</td><td>Poggemeyer Design Group</td></tr>
+<tr><td>Allison Thomas</td><td>Creating Healthy Communities Program Coordinator</td><td>Sandusky County Health Department</td></tr>
+<tr><td>John Willey</td><td>Executive Director</td><td>Sandusky County Regional Planning</td></tr>
+<tr><td>Ken Myers</td><td>Safety Service Director</td><td>City of Fremont</td></tr>
+<tr><td>Aly Rumer</td><td>Naturalist</td><td>Sandusky County Park District</td></tr>
+<tr><td>Andrew Brown</td><td>Director</td><td>Sandusky County Park District</td></tr>
+<tr><td>Lonnie Shuey</td><td>Admin. Coord. for Institutional Advancement</td><td>Terra State Community College</td></tr>
+<tr><td>Jim Willey</td><td>Bicycle advisory committee member</td><td>City of Fremont (retired)</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_sandusky_20160927"><h2>Sandusky, Ohio</h2><h3>September 27, 2016</h3><img class="ride-image" src="https://static1.squarespace.com/static/5645dea9e4b0639705d8b2dd/t/57f400ce9de4bbad72bcfe03/1475608879104/?format=750w"></img><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Wes Poole</td><td>Fire Department Liasion</td><td>City of Sandusky</td></tr>
+<tr><td>Greg Voltz</td><td>Development Specialist</td><td>City of Sandusky</td></tr>
+<tr><td>Marvin Ranaldson</td><td>Transit Administrator</td><td>City of Sandusky</td></tr>
+<tr><td>Nicole Grohe</td><td>Transportation Planner</td><td>Erie County</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_columbus_20160929"><h2>National transportation consultants</h2><h3>September 29, 2016</h3><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>David Shipps</td><td>Engineering Consultant</td><td>TranSystems</td></tr>
+<tr><td>Lori Duguid</td><td>Engineering Consultant</td><td>Michael Baker Intl.</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_troy_20161006"><h2>Troy, Ohio</h2><h3>October 6, 2016</h3><p>Great day with the City of Troy, Ohio Government! Lovely riding with Mayor Michael Beamish, City Council Member Tom Kendall, City Council Member John Terwiliger, City Council Member Doug Tremblay, Director of Public Service and Safety Patrick Titterington, Police Captain Shawn McKinney, Assistant Fire Chief Eric Krites, Complete Streets Coordinator Tim Davis, J&D Bicycles shop owner Joyce Ferguson, and community leader and bike advocate Fred Minnich . Huge thanks to City Engineer Jillian Grow Rhoades and City of Troy's bike guy Stan Kegley for convening this wonderful group.
+</p><img class="ride-image" src="https://scontent.fcmh1-1.fna.fbcdn.net/v/t1.0-9/14610958_10154682400638933_841423734219313674_n.jpg?oh=0bc1f3b2c2f301601d8a98cfe82751b7&oe=58D9E5A6"></img><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Tom Kendall</td><td>City Council</td><td>City of Troy</td></tr>
+<tr><td>Joyce Ferguson</td><td>Business owner</td><td>J&D Bicycles</td></tr>
+<tr><td>John Terwilliger</td><td>City Council</td><td>City of Troy</td></tr>
+<tr><td>Eric Krites</td><td>Assistant Fire Chief</td><td>City of Troy</td></tr>
+<tr><td>Patrick Titterington</td><td>Director of Public Service and Safety</td><td>City of Troy</td></tr>
+<tr><td>Mike Beamish</td><td>Mayor</td><td>City of Troy</td></tr>
+<tr><td>Fred Minnich</td><td>Cycling committee member</td><td>City of Troy</td></tr>
+<tr><td>Shawn McKinney</td><td>Police Captain</td><td>City of Troy</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_massillon_20161007"><h2>Massillon, Ohio</h2><h3>October 7, 2016</h3><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>David Maley</td><td>Economic Development Specialist</td><td>City of Massillon</td></tr>
+<tr><td>Mike McKee</td><td></td><td>City of Massillon</td></tr>
+<tr><td>Kathy Catazaro Perry</td><td></td><td>City of Massillon</td></tr>
+<tr><td>Joel Smith</td><td></td><td>City of Massillon</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_bowling_green_20161012"><h2>Bowling Green, Ohio</h2><h3>October 12, 2016</h3><p>Great ride today in Bowling Green! Thanks to Jason Sisco, City Engineer - Tom Sanderson, Fire Chief - Mike Trinity, Civil Engineer - and Joe Fawcett, Assistant Municipal Administrator.
+</p><img class="ride-image" src="https://scontent.fcmh1-1.fna.fbcdn.net/v/t1.0-9/14650143_10154700579488933_1271214372382173126_n.jpg?oh=9c280cfb8983d46b235c1b7e72ddb6e2&oe=591ED096"></img><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Jason Sisco</td><td>City Engineer</td><td>City of Bowling Green</td></tr>
+<tr><td>Tom Sanderson</td><td>Fire Chief</td><td>City of Bowling Green</td></tr>
+<tr><td>Mike Trinity</td><td>Civil Engineer</td><td>City of Bowling Green</td></tr>
+<tr><td>Joe Fawcett</td><td>Assistant Municipal Administrator</td><td>City of Bowling Green</td></tr>
+</tbody>
+</table>
+<p>This is what the media had to say:</p><ul><li><a href="http://bgindependentmedia.org/bike-tour-of-bg-opens-eyes-to-some-solutions/">Bike tour of BG opens eyes to some solutions &#8211; BG Independent News</a></li><li><a href="http://www.sent-trib.com/multimedia/video-advocacy-group-s-tour-points-out-safe-ways-to/video_6cd7d8ce-a5bd-11e6-b6f8-5785bf237430.html">VIDEO: Advocacy group's tour points out safe ways to bike BG - Sentinel-Tribune: Multimedia</a></li></ul></section><section  data-place="ohio_westerville_20161017"><h2>Westerville, Ohio</h2><h3>October 17, 2016</h3><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Laura Ball</td><td>Parks and Recreation Development Manager</td><td>City of Westerville</td></tr>
+<tr><td>Kevin Weaver</td><td>Director of Public Service</td><td>City of Westerville</td></tr>
+<tr><td>Doug Vineyard</td><td>Parks and Facilities Maintenance Superintendent</td><td>City of Westerville</td></tr>
+<tr><td>Jeff Kessler</td><td>Captial Improvement Plan Manager</td><td>City of Westerville</td></tr>
+<tr><td>Tom Lodge</td><td>City Planner</td><td>City of Westerville</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_athens_20161018"><h2>Athens, Ohio</h2><h3>October 18, 2016</h3><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Chris Knisely</td><td>City Council President</td><td>City of Athens</td></tr>
+<tr><td>Thomas Pyle</td><td>Police Chief</td><td>City of Athens</td></tr>
+<tr><td>Andrew Stone</td><td>City Engineer & Director of Public Works</td><td>City of Athens</td></tr>
+<tr><td>Steve Patterson</td><td>Mayor</td><td>City of Athens</td></tr>
+<tr><td>Ron Lucas</td><td>Deputy Service Safety Director</td><td>City of Athens</td></tr>
+<tr><td>Paul Logue</td><td>City Planner</td><td>City of Athens</td></tr>
+<tr><td>Jason Schoonover</td><td>Police Officer</td><td>Ohio University</td></tr>
+<tr><td>Elaine Goetz</td><td>Sustainability Specialist</td><td>Ohio University</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_nelsonville_20161025"><h2>Nelsonville, Ohio</h2><h3>October 25, 2016</h3><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Gary Edwards</td><td>City Manager</td><td>City of Nelsonville</td></tr>
+<tr><td>Anthony Davis</td><td>Business Owner</td><td></td></tr>
+<tr><td>Cory Taylor</td><td>City Council Member</td><td>City of Nelsonville</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_mariemont_20161031"><h2>ODOT District 8</h2><h3>October 31, 2016</h3><p>Yesterday Yay Bikes! visited Cincinnati to lead a professional development ride with Ohio Department of Transportation - Cincinnati District 8, City of Cincinnati Bike Program, and Great Parks of Hamilton County along several sections of the Eastern Corridor. This was a fantastic experiential learning opportunity for everyone involved to better understand the corridor's connectivity needs from the perspective of the cyclist. We hope to replicate this experience with key decision makers in other locations around the region to continue to drive #progress for bicyclists and pedestrians.  (Comments courtesy of Wade Johnston)
 
-	      <p>Professional development rides are 3 hour experiences
-	      customized for each community to feature as many types
-	      of infrastructure as possible within approximately 8–10
-	      miles. They roll at a casual pace accessible to most,
-	      and include several stops to discuss the experience of
-	      riding different streets, as well as traffic law and how
-	      it pertains to best bicycling practices. Ride leaders
-	      are extensively trained transportation cyclists and
-	      educators with deep respect for participants'
-	      professional expertise.</p>
-            </section>
-
-            <section data-place="rides"> 
-	      <h2>2016 year in review</h2>
-              <p>Although our first professional development ride did
-		not take place until mid-August, we made up for lost
-		time and led 18 rides in the remainder of the year.  The
-		111 participants who participated in the rides
-		represented a wide variety of professions including
-		engineers, planners, mayors, city managers, police
-		chiefs, and stakeholders in the parks, health, and
-		business development communities. </p>
-
-               <div class="vis" id="vis_div"></div>
-	    </section>
-
-            <section  data-place="odot8">
-                <h2>ODOT Region 8 (Hamilton County)</h2>
-		<h3>October 31, 2016</h3>
-		<img class="sidebar-content" src="https://lh3.googleusercontent.com/s5hvf5nA_Fs3rlRzNuFPbs4ikG8W94FlC_wwPysiznWPwF6gLHZ4hrqZirBNEa79v_-jt8tcnfdTyJQFMnNj2vBqkxnUVPY9mb2iKTBTUgGexJW6pLRKYcm1-2nlMXrNIEUk3xLqwRKYiK8VJO-ZTvsDHbNrc_G5SvovcPQ13NcynJVZjtW5kxaR4Y4UQ1o17xtb3gLLtvBkjC_BaANluOLymtQ88077ztJiLoMe_yFAKrfbLIxT95vDAMkQzkGVRDexZQdKOG7H3Wjbi2p6ax-iusMDRdpitzF-E9Ja0l6KMn-hDFqhopfzdcOczLTAgXV5_qah97eZmwIw5GbgR-f8M0dYgeUiXbGNaoTGVjBMav7mkbaEGN91Qf9xVRUCq1Nv7m9h7UmLi0ijfyfMaJIpUAxv9IIz7cDxRZe0zqb96oB-B7MPv5eSGrhT2imbS8TrXpoCyNmht23vBUF7JC__cCdZd5i12IxgxHDpma1HZXgyOS_6XAN2PUNyg_5Qu0Ya48Uov_NkMFs5JnaSYcna4J_4UmRgSvvKQ2QH8Z-u3GbeUGbdoNkzOjAKSVgtcvZV40XwRrr-kZ9iMyXuoOhNfXEDLw=w1366-h653"></img>
-                <p>The thought of riding on Halloween was not enough
-                to spook the participants of the ODOT Region 8 ride,
-                who enjoyed a mild and sunny autumn ride through a
-                series of small towns in Hamilton County east of
-                Cincinnati.  The group included representatives from
-                the ODOT, City of Cinncinati, Great Parks of Hamilton
-                County, and Green Umbrella.  The highlight of the ride
-                from the YayBikes! perspective was hearing the
-                participants bounce ideas off of each other and
-                brainstorm solutions to tricky cycle-route
-                connectivity problems in real time! </p>
-            </section>
-
-             <section  data-place="zanesville">
-                <h2>Zanesville</h2>
-		<h3>August 12, 2016</h3>
-		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
-                <p>The thought of riding on Halloween was not enough
-                to spook the participants of the ODOT Region 8 ride,
-                who enjoyed a mild and sunny autumn ride through a
-                series of small towns in Hamilton County east of
-                Cincinnati.  The group included representatives from
-                the ODOT, City of Cinncinati, Great Parks of Hamilton
-                County, and Green Umbrella.  The highlight of the ride
-                from the YayBikes! perspective was hearing the
-                participants bounce ideas off of each other and
-                brainstorm solutions to tricky cycle-route
-                connectivity problems in real time! </p>
-            </section>
-
-            <section  data-place="worthington">
-                <h2>Worthington</h2>
-		<h3>August 23, 2016</h3>
-		<img class="sidebar-content" src="https://static1.squarespace.com/static/5645dea9e4b0639705d8b2dd/t/57d1b6c0414fb564bfa1f915/1473361605902/?format=750w"></img>
-                <p>The thought of riding on Halloween was not enough
-                to spook the participants of the ODOT Region 8 ride,
-                who enjoyed a mild and sunny autumn ride through a
-                series of small towns in Hamilton County east of
-                Cincinnati.  The group included representatives from
-                the ODOT, City of Cinncinati, Great Parks of Hamilton
-                County, and Green Umbrella.  The highlight of the ride
-                from the YayBikes! perspective was hearing the
-                participants bounce ideas off of each other and
-                brainstorm solutions to tricky cycle-route
-                connectivity problems in real time! </p>
-            </section>
-
-            <section  data-place="troy">
-                <h2>Troy</h2>
-		<h3>September 8, 2016</h3>
-		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
-                <p>The thought of riding on Halloween was not enough
-                to spook the participants of the ODOT Region 8 ride,
-                who enjoyed a mild and sunny autumn ride through a
-                series of small towns in Hamilton County east of
-                Cincinnati.  The group included representatives from
-                the ODOT, City of Cinncinati, Great Parks of Hamilton
-                County, and Green Umbrella.  The highlight of the ride
-                from the YayBikes! perspective was hearing the
-                participants bounce ideas off of each other and
-                brainstorm solutions to tricky cycle-route
-                connectivity problems in real time! </p>
-            </section>
-
-            <section  data-place="powell">
-                <h2>Powell</h2>
-		<h3>September 12, 2016</h3>
-		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
-                <p>The thought of riding on Halloween was not enough
-                to spook the participants of the ODOT Region 8 ride,
-                who enjoyed a mild and sunny autumn ride through a
-                series of small towns in Hamilton County east of
-                Cincinnati.  The group included representatives from
-                the ODOT, City of Cinncinati, Great Parks of Hamilton
-                County, and Green Umbrella.  The highlight of the ride
-                from the YayBikes! perspective was hearing the
-                participants bounce ideas off of each other and
-                brainstorm solutions to tricky cycle-route
-                connectivity problems in real time! </p>
-            </section>
-
-            <section  data-place="miamisburg">
-                <h2>Miamisburg</h2>
-		<h3>September 16, 2016</h3>
-		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
-                <p>The thought of riding on Halloween was not enough
-                to spook the participants of the ODOT Region 8 ride,
-                who enjoyed a mild and sunny autumn ride through a
-                series of small towns in Hamilton County east of
-                Cincinnati.  The group included representatives from
-                the ODOT, City of Cinncinati, Great Parks of Hamilton
-                County, and Green Umbrella.  The highlight of the ride
-                from the YayBikes! perspective was hearing the
-                participants bounce ideas off of each other and
-                brainstorm solutions to tricky cycle-route
-                connectivity problems in real time! </p>
-            </section>
-
-            <section  data-place="richland">
-                <h2>Richland</h2>
-		<h3>September 19, 2016</h3>
-		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
-                <p>The thought of riding on Halloween was not enough
-                to spook the participants of the ODOT Region 8 ride,
-                who enjoyed a mild and sunny autumn ride through a
-                series of small towns in Hamilton County east of
-                Cincinnati.  The group included representatives from
-                the ODOT, City of Cinncinati, Great Parks of Hamilton
-                County, and Green Umbrella.  The highlight of the ride
-                from the YayBikes! perspective was hearing the
-                participants bounce ideas off of each other and
-                brainstorm solutions to tricky cycle-route
-                connectivity problems in real time! </p>
-            </section>
-
-            <section  data-place="fremont">
-                <h2>Fremont</h2>
-		<h3>September 22, 2016</h3>
-		<img class="sidebar-content" src="https://lh5.googleusercontent.com/ALbz_Qisd2ezoKJ4L_8ZWf2u2v1IHd-ryfw8XnuvMus1bFk8FxTo6XLQEqFmwQoUpWOMv89Y_AobjZNt9Fm0DEs-sPfejLugLkb_=w1366-h604-rw"></img>
-                <p>The thought of riding on Halloween was not enough
-                to spook the participants of the ODOT Region 8 ride,
-                who enjoyed a mild and sunny autumn ride through a
-                series of small towns in Hamilton County east of
-                Cincinnati.  The group included representatives from
-                the ODOT, City of Cinncinati, Great Parks of Hamilton
-                County, and Green Umbrella.  The highlight of the ride
-                from the YayBikes! perspective was hearing the
-                participants bounce ideas off of each other and
-                brainstorm solutions to tricky cycle-route
-                connectivity problems in real time! </p>
-            </section>
+</p><img class="ride-image" src="https://scontent.fcmh1-1.fna.fbcdn.net/v/t1.0-9/14915371_365483780460873_6208879398602905544_n.jpg?oh=758dc3ff0e60ca2bf8ad5677fbacb6e1&oe=591403D9"></img><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Wade Johnston</td><td>Regional Trails Coordinator</td><td>Green Umbrella</td></tr>
+<tr><td>Jack Sutton</td><td>Executive Director</td><td>Great Parks of Hamilton County</td></tr>
+<tr><td>Tommy Arnold</td><td>Engineer / Project Coordinator</td><td>Ohio Department of Transportation</td></tr>
+<tr><td>Christopher Ertel</td><td>Supervising Engineer</td><td>City of Cincinnati</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_akron_20161102"><h2>Akron, Ohio</h2><h3>November 2, 2016</h3><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Steve Rebillot</td><td>Highway Project Coordinator</td><td>Ohio Department of Transportation</td></tr>
+<tr><td>Gery Noirot</td><td>Consultant Administration Manager</td><td>Ohio Department of Transportation</td></tr>
+<tr><td>Dayna Mallas</td><td>Transportation Engineer</td><td>Ohio Department of Transportation</td></tr>
+<tr><td>Chad Root</td><td>Transportation Alternatives Project Coordinator</td><td>Ohio Department of Transportation</td></tr>
+<tr><td>Nicholas Meyer</td><td>Engineering Project Manager</td><td>City of Akron</td></tr>
+<tr><td>Seth Bush</td><td>City Planner</td><td>Akron Metropolitan Transportation Area Study</td></tr>
+<tr><td>Kristi Kato</td><td>Community Health Supervisor</td><td>Summit County Health Department</td></tr>
+<tr><td>Kimberly Mondora</td><td>Consultant Manager</td><td>Ohio Department of Transportation</td></tr>
+</tbody>
+</table>
+</section><section  data-place="ohio_bowling_green_20161107"><h2>Bowling Green, Ohio</h2><h3>November 7, 2016</h3><p>It was an honor to spend last week assisting the fine leadership in the City of Bowling Green, Ohio think about how best to accommodate people using bikes for transportation. "I've cycled for over 60 years, in multiple countries," said Steve Langendorfer, president of the city's Bicycle Safety Commission. "I bike thousands of miles every year." During those years, he has consistently hugged the edge of the road - trying to be courteous to motorists and trying to take the safest spot on the road. But on Monday, Langendorfer and the others rode a few feet into the road, about where the passenger tire of a car would travel. "It was fascinating," he said. Yay Bikes! leads the way in BG.
+</p><p>The following people joined us for the ride:</p><table data-toggle = "table">
+<thead><tr><th>Name</th><th>Title/Department</th><th>Organization</th></tr></thead>
+<tbody>
+<tr><td>Peter Kuebeck</td><td>Staff Writer</td><td>Bowling Green Sentinel-Tribune</td></tr>
+<tr><td>Jennifer Karches</td><td>Traffic Manager / Broadcast Coordinator</td><td>WBGU-TV</td></tr>
+<tr><td>Brian Craft</td><td>Public Works Director</td><td>City of Bowling Green</td></tr>
+<tr><td>Christopher Waterfield</td><td>Traffic Engineer</td><td>Ohio Department of Transportation</td></tr>
+<tr><td>Jan Larson McLaughlin</td><td>Reporter</td><td>BG Independent News</td></tr>
+<tr><td>Sean Herman</td><td>Student / Policy Research Aide</td><td>Bowling Green State University</td></tr>
+<tr><td>Mike Aspacher</td><td>City Council President</td><td>City of Bowling Green</td></tr>
+<tr><td>Steve Langendorfer</td><td>Associate Professor of Kinesiology</td><td>Bowling Green State University</td></tr>
+<tr><td>Daniel Gordon</td><td>City Council Member</td><td>City of Bowling Green</td></tr>
+</tbody>
+</table>
+</section>	
         </div>
 
         <div id="map" class="col-sm-3 col-md-5 sidebar">
@@ -283,46 +311,58 @@
 <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="storymap.js"></script>
-<script src="data/20161031_pdr_odot8_route_lines.js"></script>
-<script src="data/20161031_pdr_odot8_route_points.js"></script>
-<script src="data/2016_rides.js"></script>
+<script src="./leaflet.edgebuffer.js"></script>
+
+<script src="route_lines.js"></script>
+<script src="rides.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>
+
 <script type="text/javascript">
+
     (function () {
         'use strict';
 
-        // additional layers
-        var layers = {
-	  'rides' : L.geoJson(rides, {
-              onEachFeature: pop_rides }),
-          'odot8_points' : L.geoJson(odot8_points),
-          'odot8_lines' : L.geoJson(odot8_lines)
-        };
-
         function pop_rides(feature, layer) {
-            var popupContent = '<table><tr><td colspan="2"><strong>DESCRIPTION</strong><br />' + feature.properties['DESCRIPTIO']  + '</td></tr></table>';
-            layer.bindPopup(popupContent);
+              var popupContent = '<table><tr><td>' + feature.properties['DESCRIPTIO'] + '</td></tr><tr><td>' + feature.properties['DATE'] + '</td></tr></table>';
+              layer.bindPopup(popupContent);
         }
 
-        var markers = {
-	    rides: {lat: 39.9622601, lon: -83.0007064, 
-		    zoom: 7, layer:layers['rides']},
-            odot8: {lat: 39.131874353016123, lon: -84.385620432948912,
-                    zoom: 13, layer:layers['odot8_lines']},
-            zanesville: {lon: -82.0131923, lat: 39.9403453,
-                    zoom: 13},
-            worthington: {lon: -83.0179619, lat: 40.0931191,
-                    zoom: 13},
-            troy: {lon: -84.2032766, lat: 40.0394982, 
-                    zoom: 13},
-            powell: {lon: -83.0751868, lat: 40.1578403,
-                    zoom: 13},
-            miamisburg:{lon: -84.2866082, lat: 39.6428362,
-                    zoom: 13},
-            richland: {lon: -82.515447, lat: 40.75839,
-                    zoom: 13},
-            fremont: {lon: -83.1218633, lat: 41.3503303,
-                    zoom: 13}
-        };
+var layers = {'l_rides' : L.geoJson(rides_JSON, { onEachFeature: pop_rides }),
+'l_ohio_troy_20160908' : L.geoJson(JSON_ohio_troy_20160908),
+'l_ohio_powell_20160912' : L.geoJson(JSON_ohio_powell_20160912),
+'l_ohio_miamisburg_20160916' : L.geoJson(JSON_ohio_miamisburg_20160916),
+'l_ohio_mansfield_20160919' : L.geoJson(JSON_ohio_mansfield_20160919),
+'l_ohio_fremont_20160922' : L.geoJson(JSON_ohio_fremont_20160922),
+'l_ohio_sandusky_20160927' : L.geoJson(JSON_ohio_sandusky_20160927),
+'l_ohio_columbus_20160929' : L.geoJson(JSON_ohio_columbus_20160929),
+'l_ohio_troy_20161006' : L.geoJson(JSON_ohio_troy_20161006),
+'l_ohio_massillon_20161007' : L.geoJson(JSON_ohio_massillon_20161007),
+'l_ohio_bowling_green_20161012' : L.geoJson(JSON_ohio_bowling_green_20161012),
+'l_ohio_westerville_20161017' : L.geoJson(JSON_ohio_westerville_20161017),
+'l_ohio_athens_20161018' : L.geoJson(JSON_ohio_athens_20161018),
+'l_ohio_nelsonville_20161025' : L.geoJson(JSON_ohio_nelsonville_20161025),
+'l_ohio_mariemont_20161031' : L.geoJson(JSON_ohio_mariemont_20161031),
+'l_ohio_akron_20161102' : L.geoJson(JSON_ohio_akron_20161102),
+};
+var markers = {rides: {lat: 39.9622601, lon: -83.0007064, zoom: 7, layer:layers['l_rides']},
+ohio_troy_20160908: {lat: 39.96039, lon: -82.98642, zoom: 13, layer:layers['l_ohio_troy_20160908'] },
+ohio_powell_20160912: {lat: 40.15825, lon: -83.08225, zoom: 13, layer:layers['l_ohio_powell_20160912'] },
+ohio_miamisburg_20160916: {lat: 39.64012, lon: -84.2791, zoom: 13, layer:layers['l_ohio_miamisburg_20160916'] },
+ohio_mansfield_20160919: {lat: 40.75744, lon: -82.52776, zoom: 13, layer:layers['l_ohio_mansfield_20160919'] },
+ohio_fremont_20160922: {lat: 41.35194, lon: -83.12478, zoom: 13, layer:layers['l_ohio_fremont_20160922'] },
+ohio_sandusky_20160927: {lat: 41.45282, lon: -82.71729, zoom: 13, layer:layers['l_ohio_sandusky_20160927'] },
+ohio_columbus_20160929: {lat: 39.96039, lon: -82.98642, zoom: 13, layer:layers['l_ohio_columbus_20160929'] },
+ohio_troy_20161006: {lat: 40.03832, lon: -84.2125, zoom: 13, layer:layers['l_ohio_troy_20161006'] },
+ohio_massillon_20161007: {lat: 40.79756, lon: -81.51931, zoom: 13, layer:layers['l_ohio_massillon_20161007'] },
+ohio_bowling_green_20161012: {lat: 41.37678, lon: -83.65204, zoom: 13, layer:layers['l_ohio_bowling_green_20161012'] },
+ohio_westerville_20161017: {lat: 40.1214, lon: -82.92419, zoom: 13, layer:layers['l_ohio_westerville_20161017'] },
+ohio_athens_20161018: {lat: 39.3297, lon: -82.09655, zoom: 13, layer:layers['l_ohio_athens_20161018'] },
+ohio_nelsonville_20161025: {lat: 39.45648, lon: -82.22993, zoom: 13, layer:layers['l_ohio_nelsonville_20161025'] },
+ohio_mariemont_20161031: {lat: 39.11936, lon: -84.38501, zoom: 13, layer:layers['l_ohio_mariemont_20161031'] },
+ohio_akron_20161102: {lat: 41.06937, lon: -81.51654, zoom: 13, layer:layers['l_ohio_akron_20161102'] },
+};
+    
 
         $('.main').storymap({markers: markers});
     }());

@@ -21,35 +21,19 @@
 .main {
     padding: 20px;
     padding-bottom: 500px;
+    background-color: #fcf8f8;
+    color: rgba(26, 26, 26, 0.7)
+    font-family: "proxima-nova";
+    font-style: normal;
+    font-weight: 400;
 }
 @media (min-width: 768px) {
     .main {
-        padding-right: 40px;
-        padding-left: 40px;
-	background-color: #ac1b1b;
+        padding-right: 20px;
+        padding-left: 20px;
     }
 }
-
-img.sidebar-content {	
-	width: 90%;
-	display: block;
-    	margin: auto;
-	background-color: #f5f5f5;
-	padding: 20px;
-}
-
-img.logo {	
-	display: block;
-    	margin: auto;
-	background-color: #ac1b1b;
-	padding: 20px;
-}
-
-h1.page-header {
-    	color: #f5f5f5;
-}
-
-.main .page-header {
+.main {
     margin-top: 0;
 }
 
@@ -68,14 +52,48 @@ h1.page-header {
 }
 
 section {
-    padding: 5px 10px 10px 10px;
-    border-radius: 10px;
+    padding: 20px 20px 20px 20px;
+    border-radius: 5px;
+    font-family: "Arial";
+    font-size: 18px;
+    color: rgba(26,26,26,.7);
+}
+
+#titleblock {
+    margin-top: 0;
+    padding: 10px 10px 10px 10px;
+    color: #fefbfb;
+    background-color: #ac1b1b;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#logo {
+    padding: 10px 10px 10px 10px;
+    display: block; 
+    margin:0 auto;
+}
+
+h1.page-header {
+    border-bottom: 0px;
+    margin: 10px 10px 10px 10px;
+    padding-bottom: 0px;
+}
+
+img.ride-image {
+    display: block;
+    margin: 0 auto;
+    padding: 20px 0px 20px 0px;
+    width: 90%;
+}
+
+p {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 0px 10px 0px;
 }
 
 p.quote {
+    width: 70%;
     font-style: italic;
-    width: 80%;
-    margin: auto;
-    style: italic;
-    padding: 10px;
 }
